@@ -1,4 +1,4 @@
-from comunidadeimpressionadora import app
+from comunidadeimpressionadora import app, routes
 from comunidadeimpressionadora.criarbanco import db
 
 

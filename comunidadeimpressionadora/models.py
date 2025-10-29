@@ -6,8 +6,8 @@ class Usuario(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(30), nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
+    senha = db.Column(db.String(30), nullable=False)
     foto_de_perfil = db.Column(db.String, default='default.jpg')
     cursos = db.Column(db.String, nullable=False, default='Não informado!')
 
