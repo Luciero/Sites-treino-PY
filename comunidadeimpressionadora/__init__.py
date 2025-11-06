@@ -1,8 +1,7 @@
-import bcrypt
 from flask import Flask
 from comunidadeimpressionadora.criarbanco import db
-from comunidadeimpressionadora.models import Usuario, Post
 from flask_bcrypt import Bcrypt
+from flask_login import LoginManager
 
 lista_usuarios = ['Pedro','João','Maria','Mauro']
 
@@ -12,5 +11,5 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 
 db.init_app(app)
 bcrypt = Bcrypt(app)
-
+login_manager = LoginManager(app)
 
