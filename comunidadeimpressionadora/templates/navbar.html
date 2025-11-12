@@ -12,14 +12,27 @@
           <li class="nav-item">
           <a class="nav-link {% if request.path.startswith('/contato') %} active {% endif %}" href="{{ url_for('contato') }}">Contato</a>
         </li>
+
       </ul>
       <ul class="d-flex navbar-nav mb-2">
-          <li class="nav-item">
-            <a class="nav-link {% if request.path.startswith('/login') %} active {% endif %}" aria-current="page" href="{{ url_for('login') }}">Login</a>
-        </li>
-          <li class="nav-item">
-            <a class="nav-link {% if request.path.startswith('/login') %} active {% endif %}" aria-current="page" href="{{ url_for('login') }}">Criar Conta</a>
-        </li>
+          {% if current_user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link {% if request.path.startswith('/login') %} active {% endif %}" aria-current="page" href="{{ url_for('perfil') }}">Meu Perfil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.path.startswith('/login') %} active {% endif %}" aria-current="page" href="{{ url_for('criar_post') }}">Criar Post</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.path.startswith('/login') %} active {% endif %}" aria-current="page" href="{{ url_for('sair') }}">Sair</a>
+            </li>
+          {% else %}
+              <li class="nav-item">
+                <a class="nav-link {% if request.path.startswith('/login') %} active {% endif %}" aria-current="page" href="{{ url_for('login') }}">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link {% if request.path.startswith('/login') %} active {% endif %}" aria-current="page" href="{{ url_for('login') }}">Criar Conta</a>
+              </li>
+          {% endif %}
       </ul>
     </div>
   </div>

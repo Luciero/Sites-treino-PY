@@ -3,7 +3,7 @@ from comunidadeimpressionadora.forms import FormLogin, FormCriarConta
 from comunidadeimpressionadora import app, lista_usuarios, bcrypt
 from comunidadeimpressionadora.criarbanco import db
 from comunidadeimpressionadora.models import Usuario, Post
-from flask_login import login_user
+from flask_login import login_user, logout_user, current_user
 
 @app.route('/')
 def home():
@@ -44,3 +44,24 @@ def login():
         flash(f'Conta criada com sucesso no e-mail: {form_criarconta.email.data}', 'alert-success' )
         return redirect(url_for('home'))
     return render_template('login.html', form_login = form_login, form_criarconta = form_criarconta)
+
+
+@app.route('/sair')
+def sair():
+    logout_user()
+    flash('Logout feito com Sucesso!', 'alert-success')
+    return redirect(url_for('home'))
+
+
+@app.route('/perfil')
+def perfil():
+    return render_template('perfil.html')
+
+
+@app.route('/post/criar')
+def criar_post():
+    return render_template('criarpost.html')
+
+
+
+
