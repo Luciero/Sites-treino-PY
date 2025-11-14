@@ -12,4 +12,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///banco.db'
 db.init_app(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+login_manager.login_view = 'login'                # redireciona para o login se nao tiver logado
+login_manager.login_message_category = 'alert-info'
 
