@@ -5,6 +5,7 @@ from comunidadeimpressionadora.criarbanco import db
 from comunidadeimpressionadora.models import Usuario, Post
 from flask_login import login_user, logout_user, current_user, login_required
 
+
 @app.route('/')
 def home():
     return render_template('home.html')
