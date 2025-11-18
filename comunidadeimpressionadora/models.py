@@ -1,5 +1,4 @@
-from comunidadeimpressionadora.criarbanco import db
-from comunidadeimpressionadora import login_manager
+from comunidadeimpressionadora import login_manager, db
 from datetime import datetime
 from flask_login import UserMixin
 
@@ -16,7 +15,7 @@ class Usuario(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String, unique=True, nullable=False)
     senha = db.Column(db.String(30), nullable=False)
-    foto_de_perfil = db.Column(db.String, default='default.jpg')
+    foto_perfil = db.Column(db.String, default='default.jpg')
     cursos = db.Column(db.String, nullable=False, default='Não informado!')
     posts = db.relationship('Post', backref='autor', lazy=True)
 
