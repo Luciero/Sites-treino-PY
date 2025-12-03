@@ -22,7 +22,6 @@ class Usuario(db.Model, UserMixin):
 
 
 
-
 class Post(db.Model):
     __tablename__ = 'posts'
 

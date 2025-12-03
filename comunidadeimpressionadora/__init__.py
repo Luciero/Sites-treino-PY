@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-lista_usuarios = ['Pedro','João','Maria','Mauro']
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'adca60707f946de523ded83a1cf470a5'
