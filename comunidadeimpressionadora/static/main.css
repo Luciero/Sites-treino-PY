@@ -6,7 +6,7 @@
 }
 
 .stats{
-  background: #f2f5f8 !important;
+  background: #f2f5f8!important;
   color: #000 !important;
 }
 
@@ -35,4 +35,8 @@
 
 .number3{
   font-weight:500;
+}
+
+.meupost{
+  background: #f2f5f8 !important;
 }

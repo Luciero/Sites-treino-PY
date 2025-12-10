@@ -10,7 +10,8 @@ from PIL import Image
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    posts = Post.query.order_by(Post.id.desc()).all()
+    return render_template('home.html', posts=posts)
 
 
 @app.route('/contato')
