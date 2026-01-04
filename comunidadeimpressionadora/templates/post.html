@@ -15,7 +15,14 @@
 
                 </div>
                 <div class="col col-9">
-                    <h3>{{ post.titulo.title() }}</h3>
+                    <h3>{{ post.titulo.title() }}
+                        <small class="text-muted" style="font-size: 15px" > - Data de criação : {{ post.data_criacao.strftime('%d/%m/%Y') }}
+                            {% if form %}
+                                - <a style="font-size: 16.3px" href="#form_editarpost" class="text-decoration-none"> Editar Post </a>
+                                / <a style="font-size: 16.3px" href="#"  data-bs-toggle="modal" data-bs-target="#ExcluirPost" class="text-danger text-decoration-none"> Excluir Post </a>
+                            {% endif %}
+                        </small>
+                    </h3>
                     <p>{{ post.corpo }}</p>
                 </div>
             </div>
@@ -25,7 +32,7 @@
     <div class="container">
        <div class="row">
            <div class="col">
-               <form method="POST" action="" class="border p-4 mt-2" enctype="multipart/form-data">
+               <form id="form_editarpost" method="POST" action="" class="border p-4 mt-2" enctype="multipart/form-data">
                    {{ form.csrf_token }}
                    <Legend>Editar Post</Legend>
                         <fieldset>
@@ -61,7 +68,29 @@
            </div>
        </div>
    </div>
+
 {% endif %}
+
+<!-- Modal -->
+<div class="modal fade" id="ExcluirPost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Excluir Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que quer excluir este post?  (Essa ação não podera ser desfeita!)
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <form method="POST" action="{{ url_for('excluir_post', post_id=post.id) }}">
+              <button type="submit" class="btn btn-danger">Excluir Post</button>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
 
